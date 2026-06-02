@@ -96,3 +96,32 @@ async function handleLogin() {
 
   </div>
 </template>
+
+<style scoped>
+/* Fix 1: h1 não estourar o painel em viewports médias.
+   O clamp global usa 9vw que pode exceder a largura disponível do
+   painel (≤480px) em viewports intermediárias. Reduzimos o coeficiente
+   para 6vw e o mínimo para 44px — "projetos" cabe numa linha sem
+   quebra forçada de palavra em nenhuma resolução comum. */
+.auth-form-panel h1 {
+  font-size: clamp(44px, 6vw, 104px);
+}
+
+/* Fix 2: O CSS global define width:100% no .auth-theme para uso
+   standalone. Dentro do footer (flexbox space-between) isso engole
+   todo o espaço e empurra o "FlowBoard v1.0".
+   O seletor scoped tem especificidade maior (+data-v) então vence. */
+.auth-form-footer .auth-theme {
+  width: auto;
+  min-width: 140px;
+}
+
+/* Fix 3: Esconde o bento grid em telas estreitas.
+   Em mobile o grid já colapsava para 1 coluna mas o bento
+   ficava empilhado abaixo do formulário com layout quebrado. */
+@media (max-width: 900px) {
+  .auth-bento {
+    display: none;
+  }
+}
+</style>
