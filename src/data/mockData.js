@@ -95,5 +95,12 @@ export const recentTasks = [
   { id: 2, title: 'Configurar CI/CD pipeline', project: 'App Mobile v2.0', assignee: 'FT', status: 'active', due: '2026-06-05' },
   { id: 3, title: 'Integrar auth no portal', project: 'Portal do Cliente', assignee: 'BM', status: 'active', due: '2026-06-04' },
   { id: 4, title: 'Testes de carga na API', project: 'API de Pagamentos', assignee: 'HF', status: 'completed', due: '2026-05-18' },
-  { id: 5, title: 'Mapeamento de endpoints ERP', project: 'Integração ERP', assignee: 'CS', status: 'paused', due: '2026-06-10' }
+  { id: 5, title: 'Mapeamento de endpoints ERP', project: 'Integração ERP', assignee: 'CS', status: 'paused', due: '2026-06-10' },
+  { id: 6, title: 'Wireframes da tela de checkout', project: 'Redesign do Site', assignee: 'AL', status: 'active', due: '2026-06-20' },
+  { id: 7, title: 'Implementar push notifications', project: 'App Mobile v2.0', assignee: 'ES', status: 'paused', due: '2026-07-01' },
+  { id: 8, title: 'Documentar endpoints REST', project: 'Integração ERP', assignee: 'CS', status: 'active', due: '2026-06-15' },
+  { id: 9, title: 'Revisão de acessibilidade', project: 'Portal do Cliente', assignee: 'AL', status: 'active', due: '2026-06-25' },
+  { id: 10, title: 'Deploy em produção', project: 'API de Pagamentos', assignee: 'FT', status: 'completed', due: '2026-05-20' },
+  { id: 11, title: 'Configurar monitoramento', project: 'Dashboard Analytics', assignee: 'GN', status: 'paused', due: '2026-07-10' },
+  { id: 12, title: 'Testes unitários do módulo de auth', project: 'Portal do Cliente', assignee: 'HF', status: 'active', due: '2026-06-18' }
 ]
