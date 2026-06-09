@@ -31,6 +31,11 @@ function addProject(data) {
   projects.value.push({ id: Date.now(), ...data, progress: 0, tasks: 0, completedTasks: 0, team: [] })
   showModal.value = false
 }
+
+// Remove o projeto da lista pelo id
+function deleteProject(id) {
+  projects.value = projects.value.filter(p => p.id !== id)
+}
 </script>
 
 <template>
@@ -89,6 +94,7 @@ function addProject(data) {
               <th>Progresso</th>
               <th>Tarefas</th>
               <th>Prazo</th>
+              <th>Ação</th>
             </tr>
           </thead>
           <tbody>
@@ -112,6 +118,12 @@ function addProject(data) {
               </td>
               <td class="tabular">{{ project.completedTasks }}/{{ project.tasks }}</td>
               <td>{{ formatDate(project.deadline) }}</td>
+              <!-- Botão de excluir — chama deleteProject com o id do projeto -->
+              <td>
+                <UiButton variant="secondary" @click="deleteProject(project.id)">
+                  Excluir
+                </UiButton>
+              </td>
             </tr>
           </tbody>
         </table>
