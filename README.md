@@ -1,6 +1,6 @@
-# FlowBoard — Gestão de Projetos
+# FlowBoard | Gestão de Projetos
 
-Dashboard de gerenciamento de projetos e equipes construído com **Vue.js 3 + Vite**, utilizando o design system **Neo Corporate Brutalism**.
+Dashboard de gerenciamento de projetos e equipes construído com **Vue.js 3 + Vite**
 
 ## Tecnologias
 
