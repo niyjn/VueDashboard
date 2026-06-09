@@ -9,6 +9,7 @@ const { theme, toggle } = useTheme()
 const tabs = [
   { name: 'overview',      label: 'Visão Geral',    sub: 'Dashboard' },
   { name: 'projetos',      label: 'Projetos',        sub: 'Gestão' },
+  { name: 'tarefas',       label: 'Tarefas',         sub: 'Atividades' },
   { name: 'equipe',        label: 'Equipe',          sub: 'Colaboradores' },
   { name: 'configuracoes', label: 'Configurações',   sub: 'Conta' }
 ]
