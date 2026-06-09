@@ -5,6 +5,7 @@ import OverviewView from '@/views/OverviewView.vue'
 import ProjectsView from '@/views/ProjectsView.vue'
 import TeamView from '@/views/TeamView.vue'
 import SettingsView from '@/views/SettingsView.vue'
+import TasksView from '@/views/TasksView.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -20,10 +21,11 @@ const router = createRouter({
       redirect: '/overview',
       meta: { requiresAuth: true },
       children: [
-        { path: 'overview', name: 'overview', component: OverviewView },
-        { path: 'projetos', name: 'projetos', component: ProjectsView },
-        { path: 'equipe', name: 'equipe', component: TeamView },
-        { path: 'configuracoes', name: 'configuracoes', component: SettingsView }
+        { path: 'overview',       name: 'overview',       component: OverviewView },
+        { path: 'projetos',       name: 'projetos',       component: ProjectsView },
+        { path: 'tarefas',        name: 'tarefas',        component: TasksView },
+        { path: 'equipe',         name: 'equipe',         component: TeamView },
+        { path: 'configuracoes',  name: 'configuracoes',  component: SettingsView }
       ]
     }
   ]
