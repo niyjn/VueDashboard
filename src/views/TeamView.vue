@@ -3,8 +3,12 @@
 import { ref, computed } from 'vue'
 import UiMetric from '@/components/ui/UiMetric.vue'
 import UiPill   from '@/components/ui/UiPill.vue'
+import UiButton from '@/components/ui/UiButton.vue'
 import { team } from '@/data/mockData.js'
 import { statusTone, statusLabel } from '@/utils/format.js'
+import { useTuxVault } from '@/composables/useTuxVault.js'
+
+const { uploading, exportar } = useTuxVault()
 
 const search     = ref('')
 const deptFilter = ref('')
@@ -54,6 +58,9 @@ const avgTasks      = computed(() => {
           <h3>Colaboradores</h3>
           <p>{{ filtered.length }} de {{ team.length }} exibidos</p>
         </div>
+        <UiButton variant="secondary" :disabled="uploading" @click="exportar('equipe.json', team)">
+          {{ uploading ? 'Exportando...' : 'Exportar' }}
+        </UiButton>
       </div>
 
       <!-- Filtros: busca + departamento (v-model) -->
