@@ -6,6 +6,9 @@ import UiButton from '@/components/ui/UiButton.vue'
 import UiMetric from '@/components/ui/UiMetric.vue'
 import { recentTasks as initialTasks } from '@/data/mockData.js'
 import { statusTone, statusLabel, formatDate } from '@/utils/format.js'
+import { useTuxVault } from '@/composables/useTuxVault.js'
+
+const { uploading, exportar } = useTuxVault()
 
 // Lista reativa de tarefas — cópia dos dados mock para permitir alterações
 const tasks = ref(initialTasks.map(t => ({ ...t })))
@@ -58,6 +61,9 @@ function completeTask(id) {
           <h3>Todas as Tarefas</h3>
           <p>Filtre por status ou busque pelo nome</p>
         </div>
+        <UiButton variant="secondary" :disabled="uploading" @click="exportar('tarefas.json', tasks)">
+          {{ uploading ? 'Exportando...' : 'Exportar' }}
+        </UiButton>
       </div>
 
       <!-- Filtros -->
