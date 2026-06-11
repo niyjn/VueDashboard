@@ -6,6 +6,9 @@ import UiPill   from '@/components/ui/UiPill.vue'
 import TaskModal from '@/components/TaskModal.vue'
 import { projects as initialProjects } from '@/data/mockData.js'
 import { statusTone, statusLabel, priorityTone, priorityLabel, formatDate } from '@/utils/format.js'
+import { useTuxVault } from '@/composables/useTuxVault.js'
+
+const { uploading, exportar } = useTuxVault()
 
 // Lista reativa — permite adicionar novos projetos
 const projects = ref([...initialProjects])
@@ -52,7 +55,12 @@ function deleteProject(id) {
           <h3>Todos os Projetos</h3>
           <p>Filtre por status, prioridade ou busque pelo nome</p>
         </div>
-        <UiButton @click="showModal = true">+ Novo Projeto</UiButton>
+        <div style="display:flex;gap:8px">
+          <UiButton variant="secondary" :disabled="uploading" @click="exportar('projetos.json', projects)">
+            {{ uploading ? 'Exportando...' : 'Exportar' }}
+          </UiButton>
+          <UiButton @click="showModal = true">+ Novo Projeto</UiButton>
+        </div>
       </div>
 
       <!-- Linha de filtros (v-model em cada controle) -->
