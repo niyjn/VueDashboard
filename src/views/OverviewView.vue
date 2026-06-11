@@ -3,8 +3,12 @@
 import { computed } from 'vue'
 import UiMetric from '@/components/ui/UiMetric.vue'
 import UiPill from '@/components/ui/UiPill.vue'
+import UiButton from '@/components/ui/UiButton.vue'
 import { projects, team, recentTasks } from '@/data/mockData.js'
 import { statusTone, statusLabel, formatDate } from '@/utils/format.js'
+import { useTuxVault } from '@/composables/useTuxVault.js'
+
+const { uploading, exportar } = useTuxVault()
 
 // computed para derivar métricas dos dados mock
 const activeProjects  = computed(() => projects.filter(p => p.status === 'active').length)
@@ -13,6 +17,20 @@ const totalTasks      = computed(() => projects.reduce((s, p) => s + p.tasks, 0)
 const completedTasks  = computed(() => projects.reduce((s, p) => s + p.completedTasks, 0))
 const activeMembers   = computed(() => team.filter(m => m.status === 'active').length)
 const completionRate  = computed(() => Math.round((completedTasks.value / totalTasks.value) * 100) + '%')
+
+function exportOverview() {
+  exportar('overview.json', {
+    metrics: {
+      activeProjects: activeProjects.value,
+      completedProjects: completedProjects.value,
+      totalTasks: totalTasks.value,
+      completedTasks: completedTasks.value,
+      activeMembers: activeMembers.value,
+      completionRate: completionRate.value
+    },
+    recentTasks
+  })
+}
 </script>
 
 <template>
@@ -39,6 +57,9 @@ const completionRate  = computed(() => Math.round((completedTasks.value / totalT
           <h3>Atividades Recentes</h3>
           <p>Últimas tarefas atualizadas</p>
         </div>
+        <UiButton variant="secondary" :disabled="uploading" @click="exportOverview">
+          {{ uploading ? 'Exportando...' : 'Exportar' }}
+        </UiButton>
       </div>
 
       <div class="table-shell">
